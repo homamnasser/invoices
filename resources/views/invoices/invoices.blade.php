@@ -88,8 +88,6 @@
                                                             <div class="dropdown-menu tx-13">
                                                                 <a class="dropdown-item" href="{{url('edit_invoice')}}/{{$invoice->id}}">تعديل الفاتورة</a>
 
-
-
                                                                 <a class="dropdown-item"
                                                                    href="#" data-invoice_id="{{ $invoice->id }}"
                                                                    data-toggle="modal" data-target="#delete_invoice"><i
