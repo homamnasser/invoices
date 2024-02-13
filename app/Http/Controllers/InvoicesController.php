@@ -112,9 +112,10 @@ class InvoicesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(invoices $invoices)
+    public function show($id)
     {
-        //
+        $invoices = invoices::where('id', $id)->first();
+        return view('invoices.status_update', compact('invoices'));
     }
 
     /**
@@ -174,5 +175,52 @@ class InvoicesController extends Controller
     {
         $products = DB::table("products")->where("section_id", $id)->pluck("Product_name", "id");
         return json_encode($products);
+    }
+    public function Status_Update($id, Request $request)
+    {
+        $invoices = invoices::findOrFail($id);
+
+        if ($request->Status === 'مدفوعة') {
+
+            $invoices->update([
+                'Value_Status' => 1,
+                'Status' => $request->Status,
+                'Payment_Date' => $request->Payment_Date,
+            ]);
+
+            invoices_Details::create([
+                'id_Invoice' => $request->invoice_id,
+                'invoice_number' => $request->invoice_number,
+                'product' => $request->product,
+                'Section' => $request->Section,
+                'Status' => $request->Status,
+                'Value_Status' => 1,
+                'note' => $request->note,
+                'Payment_Date' => $request->Payment_Date,
+                'user' => (Auth::user()->name),
+            ]);
+        }
+
+        else {
+            $invoices->update([
+                'Value_Status' => 3,
+                'Status' => $request->Status,
+                'Payment_Date' => $request->Payment_Date,
+            ]);
+            invoices_Details::create([
+                'id_Invoice' => $request->invoice_id,
+                'invoice_number' => $request->invoice_number,
+                'product' => $request->product,
+                'Section' => $request->Section,
+                'Status' => $request->Status,
+                'Value_Status' => 3,
+                'note' => $request->note,
+                'Payment_Date' => $request->Payment_Date,
+                'user' => (Auth::user()->name),
+            ]);
+        }
+        session()->flash('Status_Update');
+        return redirect('/invoices');
+
     }
 }

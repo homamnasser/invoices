@@ -38,6 +38,17 @@
 
         </script>
     @endif
+    @if (session()->has('Status_Update'))
+        <script>
+            window.onload = function() {
+                notif({
+                    msg: "تم تحديث حالة الدفع بنجاح",
+                    type: "success"
+                })
+            }
+
+        </script>
+    @endif
 				<!-- row -->
 				<div class="row">
                         <div class="col-xl-12">
@@ -107,6 +118,11 @@
                                                                    data-toggle="modal" data-target="#delete_invoice"><i
                                                                         class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
                                                                     الفاتورة</a>
+                                                                <a class="dropdown-item"
+                                                                   href="{{ URL::route('Status_show', [$invoice->id]) }}"><i
+                                                                        class=" text-success fas                                                                                                                                                                                                                                                                                                                                                                                                                                                         fa-money-bill"></i>&nbsp;&nbsp;تغير
+                                                                    حالة
+                                                                    الدفع</a>
                                                             </div>
                                                         </div>
                                                     </td>
