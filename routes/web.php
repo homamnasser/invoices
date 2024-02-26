@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceAchiveController;
 use App\Http\Controllers\InvoicesAttachmentsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\InvoicesDetailsController;
@@ -45,6 +46,12 @@ Route::get('/section/{id}', [InvoicesController::class,'getproducts']);
 Route::get('/edit_invoice/{id}', [InvoicesController::class,'edit']);
 Route::get('/Status_show/{id}', [InvoicesController::class,'show'])->name('Status_show');
 Route::post('/Status_Update/{id}', [InvoicesController::class,'Status_Update'])->name('Status_Update');
+Route::get('Invoice_Paid',[InvoicesController::class,'Invoice_Paid']);
+Route::get('Invoice_UnPaid',[InvoicesController::class,'Invoice_UnPaid']);
+Route::get('Invoice_Partial',[InvoicesController::class,'Invoice_Partial']);
+Route::resource('Archive', InvoiceAchiveController::class);
+
+
 
 
 
