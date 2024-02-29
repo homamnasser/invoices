@@ -86,13 +86,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @php
-                                $i = 0;
-                            @endphp
+                            <?php
+                            $i=0
+                            ?>
                             @foreach ($invoices as $invoice)
-                                @php
-                                    $i++
-                                @endphp
+                                <?php
+                                 $i++
+                                ?>
+
+>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $invoice->invoice_number }} </td>
