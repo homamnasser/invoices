@@ -9,6 +9,7 @@ use App\Models\invoices_details;
 use App\Models\products;
 use App\Models\sections;
 use App\Models\User;
+use App\Notifications\AddInvoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -90,8 +91,8 @@ class InvoicesController extends Controller
         }
 
 
-        // $user = User::first();
-        // Notification::send($user, new AddInvoice($invoice_id));
+         $user = User::first();
+         Notification::send($user, new AddInvoice($invoice_id));
 
 //        $user = User::get();
 //        $invoices = invoices::latest()->first();
