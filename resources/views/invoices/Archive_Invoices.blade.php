@@ -120,12 +120,15 @@
                                             <div class="dropdown-menu tx-13">
                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                    data-toggle="modal" data-target="#Transfer_invoice"><i
-                                                        class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;نقل الي
+                                                        class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;نقل الى
                                                     الفواتير</a>
+
+                                               @can('حذف الفاتورة')
                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                    data-toggle="modal" data-target="#delete_invoice"><i
                                                         class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
                                                     الفاتورة</a>
+                                                @endcan
                                             </div>
                                         </div>
 

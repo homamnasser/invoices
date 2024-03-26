@@ -66,9 +66,13 @@
 
         <div class="col-xl-12">
             <div class="card mg-b-20">
+
                 <div class="card-header pb-0">
+                    @can('اضافة منتج')
                     <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale"
                        data-toggle="modal" href="#exampleModal">اضافة منتج</a>
+                    @endcan
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -93,17 +97,20 @@
                                     <td>{{ $Product->section->section_name }}</td>
                                     <td>{{$Product->description}}</td>
                                     <td>
-
+                                        @can('تعديل منتج')
                                             <button class="btn btn-outline-success btn-sm"
                                                     data-name="{{ $Product->Product_name }}" data-pro_id="{{ $Product->id }}"
                                                     data-section_name="{{ $Product->section->section_name }}"
                                                     data-pro_id="{{ $Product->id }}"
                                                     data-description="{{ $Product->description }}" data-toggle="modal"
                                                     data-target="#edit_Product">تعديل</button>
+                                        @endcan
 
+                                        @can('حذف منتج')
                                             <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $Product->id }}"
                                                     data-product_name="{{ $Product->Product_name }}" data-toggle="modal"
                                                     data-target="#modaldemo9">حذف</button>
+                                            @endcan
                                     </td>
                                 </tr>
 
