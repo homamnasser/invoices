@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Customers_Report;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceAchiveController;
+use App\Http\Controllers\Invoices_Report;
 use App\Http\Controllers\InvoicesAttachmentsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\InvoicesDetailsController;
@@ -59,6 +61,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles',RoleController::class);
     Route::resource('users',UserController::class);
 });
+Route::get('invoices_report',[Invoices_Report::class,'index']);
+Route::post('Search_invoices',[Invoices_Report::class,'Search_invoices']);
+Route::get('customers_report', [Customers_Report::class,'index'])->name("customers_report");
+Route::post('Search_customers', [Customers_Report::class,'Search_customers']);
 
 
 
